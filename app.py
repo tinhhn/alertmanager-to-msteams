@@ -23,10 +23,8 @@ def alert():
         alert_status = content['status']
         if alert_status == "firing":
             theme_color = "d63333"
-            activity_image = "https://img.icons8.com/external-wanicon-flat-wanicon/64/000000/external-fire-nature-wanicon-flat-wanicon.png"
         else:
             theme_color = "64a837"
-            activity_image = "https://img.icons8.com/color/144/000000/ok--v1.png"
 
         sections = []
         for alert in content['alerts']:
@@ -42,6 +40,10 @@ def alert():
                 runbook_url = alert['annotations']['runbook_url']
             else:
                 runbook_url = None
+            if alert['status'] == "firing":
+                activity_image = "https://img.icons8.com/external-wanicon-flat-wanicon/64/000000/external-fire-nature-wanicon-flat-wanicon.png"
+            else:
+                activity_image = "https://img.icons8.com/color/144/000000/ok--v1.png"
 
             labels = ""
             for label in alert['labels']:
